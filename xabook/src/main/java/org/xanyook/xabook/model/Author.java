@@ -24,6 +24,9 @@ public class Author implements Serializable {
 
     private static final long serialVersionUID = 6723741467516233314L;
 
+    @Column( name = "BIOGRAPHY", nullable = false, length = 2000 )
+    private String            biography;
+
     @Column( name = "BIRTH_DATE", nullable = false )
     @Temporal( TemporalType.TIMESTAMP )
     private Date              birthdate;
@@ -35,9 +38,6 @@ public class Author implements Serializable {
     @Temporal( TemporalType.TIMESTAMP )
     private Date              deathDate;
 
-    @Column( name = "DESCRIPTION", nullable = false, length = 1000 )
-    private String            description;
-
     @Column( name = "FIRST_NAME", nullable = false, length = 45 )
     private String            firstName;
 
@@ -48,6 +48,10 @@ public class Author implements Serializable {
 
     @Column( name = "LAST_NAME", nullable = false, length = 45 )
     private String            lastName;
+
+    public String getBiography() {
+        return biography;
+    }
 
     public Date getBirthdate() {
         return birthdate;
@@ -64,10 +68,6 @@ public class Author implements Serializable {
         return deathDate;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
     public String getFirstName() {
         return firstName;
     }
@@ -80,6 +80,10 @@ public class Author implements Serializable {
         return lastName;
     }
 
+    public void setBiography(String biography) {
+        this.biography = biography;
+    }
+
     public void setBirthdate(Date birthdate) {
         this.birthdate = birthdate;
     }
@@ -90,10 +94,6 @@ public class Author implements Serializable {
 
     public void setDeathDate(Date deathDate) {
         this.deathDate = deathDate;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public void setFirstName(String firstName) {
