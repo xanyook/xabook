@@ -1,0 +1,28 @@
+---
+swagger:
+    informations:
+        title: XABOOK
+        description: API REST de l'application XABOOK
+        vesion: 1.0.0-SNAPSHOT
+        termsOfServiceUrl: API TOS
+        contact: gil.gougnot@free.fr
+        license: License of API
+        licenseUrl: API license URL
+---
+spring:
+  jpa:
+    database: MYSQL
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:   
+        dialect: org.hibernate.dialect.MySQL5Dialect
+  datasource:
+    platform: postgres
+    url: jdbc:mysql://localhost:3306/xabook?useSSL=false
+    username: xabook
+    password: xabook
+    driverClassName: com.mysql.jdbc.Driver
+    testWhileIdle: true
+    validationQuery: SELECT SYSDATE FROM DUAL
