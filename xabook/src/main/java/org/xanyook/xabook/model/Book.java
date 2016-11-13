@@ -1,6 +1,7 @@
 package org.xanyook.xabook.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
@@ -13,7 +14,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
+
+import org.hibernate.annotations.ColumnDefault;
 
 @Entity
 @Table( name = "book", uniqueConstraints = { @UniqueConstraint( name = "UC_ISBN", columnNames = { "ISBN" } ) } )
@@ -25,6 +30,11 @@ public class Book implements Serializable {
     @ManyToOne( optional = false )
     @JoinColumn( name = "AUTHOR_ID  " )
     private Author            author;
+
+    @ColumnDefault( "NOW()" )
+    @Column( name = "CREATION_DATE", insertable = false )
+    @Temporal( TemporalType.TIMESTAMP )
+    private Date              creationDate;
 
     @Column( name = "DESCRIPTION", length = 2000 )
     private String            description;
@@ -40,6 +50,11 @@ public class Book implements Serializable {
 
     @Column( name = "ISBN", nullable = false, length = 13, unique = true )
     private String            isbn;
+
+    @ColumnDefault( "NOW()" )
+    @Column( name = "LAST_CREATION_DATE", insertable = false )
+    @Temporal( TemporalType.TIMESTAMP )
+    private Date              lastModificationDate;
 
     @Column( name = "TITLE", nullable = false, length = 200 )
     private String            title;

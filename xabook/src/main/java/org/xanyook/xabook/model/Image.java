@@ -1,6 +1,7 @@
 package org.xanyook.xabook.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
@@ -13,8 +14,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
 
+import org.hibernate.annotations.ColumnDefault;
 import org.xanyook.xabook.model.util.FileExtensionEnum;
 
 @Entity
@@ -27,6 +31,11 @@ public class Image implements Serializable {
     @OneToOne( mappedBy = "image", optional = false )
     private Book              book;
 
+    @ColumnDefault( "NOW()" )
+    @Column( name = "CREATION_DATE", insertable = false )
+    @Temporal( TemporalType.TIMESTAMP )
+    private Date              creationDate;
+
     @Enumerated( EnumType.STRING )
     @Column( name = "FILE_EXTENSION", nullable = false, length = 5 )
     private FileExtensionEnum fileExtension;
@@ -36,6 +45,10 @@ public class Image implements Serializable {
     @Column( name = "ID", nullable = false, scale = 10 )
     private Long              id;
 
+    @ColumnDefault( "NOW()" )
+    @Column( name = "LAST_CREATION_DATE", insertable = false )
+    @Temporal( TemporalType.TIMESTAMP )
+    private Date              lastModificationDate;
     @Column( name = "SIZE", nullable = false, scale = 10 )
     private Integer           size;
 

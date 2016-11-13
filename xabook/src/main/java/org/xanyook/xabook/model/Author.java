@@ -9,6 +9,7 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,6 +17,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.ColumnDefault;
 
 @Entity
 @Table( name = "author" )
@@ -31,8 +34,13 @@ public class Author implements Serializable {
     @Temporal( TemporalType.TIMESTAMP )
     private Date              birthdate;
 
-    @OneToMany( mappedBy = "author" )
+    @OneToMany( mappedBy = "author", fetch = FetchType.LAZY )
     private Set<Book>         books;
+
+    @ColumnDefault( "NOW()" )
+    @Column( name = "CREATION_DATE", insertable = false )
+    @Temporal( TemporalType.TIMESTAMP )
+    private Date              creationDate;
 
     @Column( name = "DEATH_DATE" )
     @Temporal( TemporalType.TIMESTAMP )
@@ -45,6 +53,11 @@ public class Author implements Serializable {
     @GeneratedValue( strategy = GenerationType.AUTO )
     @Column( name = "ID", nullable = false, scale = 10 )
     private Long              id;
+
+    @ColumnDefault( "NOW()" )
+    @Column( name = "LAST_CREATION_DATE", insertable = false )
+    @Temporal( TemporalType.TIMESTAMP )
+    private Date              lastModificationDate;
 
     @Column( name = "LAST_NAME", nullable = false, length = 45 )
     private String            lastName;
