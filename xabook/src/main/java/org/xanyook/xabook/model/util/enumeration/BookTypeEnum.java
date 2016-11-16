@@ -1,4 +1,4 @@
-package org.xanyook.xabook.model.util;
+package org.xanyook.xabook.model.util.enumeration;
 
 public enum BookTypeEnum {
 

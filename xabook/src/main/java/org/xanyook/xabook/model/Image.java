@@ -19,7 +19,7 @@ import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
 
 import org.hibernate.annotations.ColumnDefault;
-import org.xanyook.xabook.model.util.FileExtensionEnum;
+import org.xanyook.xabook.model.util.enumeration.FileExtensionEnum;
 
 @Entity
 @Table( name = "IMAGE", uniqueConstraints = { @UniqueConstraint( name = "UC_URI", columnNames = { "URI" } ) } )

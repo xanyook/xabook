@@ -20,7 +20,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.ColumnDefault;
-import org.xanyook.xabook.model.util.BookTypeEnum;
+import org.xanyook.xabook.model.util.enumeration.BookTypeEnum;
 
 @Entity
 @Table( name = "type" )
