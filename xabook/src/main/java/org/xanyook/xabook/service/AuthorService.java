@@ -19,9 +19,9 @@ public class AuthorService implements IAuthorService {
     public GetAuthor createAuthor(final AuthorToBeCreated authorToBeCreated) {
 
         final Author entity = AuthorTransformer.getToBeCreatedAuthorConverter().apply( authorToBeCreated );
-        authorRepository.save( entity );
+        final Author savedAuthor = authorRepository.save( entity );
 
-        return AuthorTransformer.getAuthorConverter().apply( entity );
+        return AuthorTransformer.getAuthorConverter().apply( savedAuthor );
     }
 
     @Override

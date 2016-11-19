@@ -28,7 +28,7 @@ public class Book implements Serializable {
     private static final long serialVersionUID = 826016048875608113L;
 
     @ManyToOne( optional = false )
-    @JoinColumn( name = "AUTHOR_ID  " )
+    @JoinColumn( name = "AUTHOR_ID" )
     private Author            author;
 
     @ColumnDefault( "NOW()" )
@@ -44,15 +44,15 @@ public class Book implements Serializable {
     @Id
     private Long              id;
 
-    @OneToOne( optional = false )
-    @JoinColumn( name = "IMAGE_ID  " )
+    @OneToOne
+    @JoinColumn( name = "IMAGE_ID" )
     private Image             image;
 
     @Column( name = "ISBN", nullable = false, length = 13, unique = true )
     private String            isbn;
 
     @ColumnDefault( "NOW()" )
-    @Column( name = "LAST_CREATION_DATE", insertable = false )
+    @Column( name = "LAST_MODIFICATION_DATE", insertable = false )
     @Temporal( TemporalType.TIMESTAMP )
     private Date              lastModificationDate;
 

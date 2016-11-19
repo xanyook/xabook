@@ -24,11 +24,15 @@ public class AuthorController {
     @Autowired
     private IAuthorService authorService;
 
-    @ApiOperation( value = "get author by ID" )
-    @RequestMapping( method = RequestMethod.GET, path = "/{authorId}", produces = MediaType.APPLICATION_JSON_VALUE )
-    public GetAuthor createAuthor(@PathVariable( name = "authorId" ) @NotNull final Long authorId)
-            throws AuthorException {
-        return authorService.getAuthor( authorId );
+    @ApiOperation( value = "Create a new Author" )
+    @RequestMapping( method = RequestMethod.POST, path = "/", produces = MediaType.APPLICATION_JSON_VALUE )
+    public GetAuthor createAuthor(
+        // @formatter:off
+            @RequestBody @NotNull
+            AuthorToBeCreated AuthorToBeCreated
+        // @formatter:on
+    ) throws AuthorException {
+        return authorService.createAuthor( AuthorToBeCreated );
     }
 
     @Valid
@@ -38,9 +42,9 @@ public class AuthorController {
         authorService.deleteAuthor( authorId );
     }
 
-    @ApiOperation( value = "Create a new Author" )
-    @RequestMapping( method = RequestMethod.POST, path = "/", produces = MediaType.APPLICATION_JSON_VALUE )
-    public GetAuthor getAuthor(@RequestBody @NotNull AuthorToBeCreated AuthorToBeCreated) throws AuthorException {
-        return authorService.createAuthor( AuthorToBeCreated );
+    @ApiOperation( value = "get author by ID" )
+    @RequestMapping( method = RequestMethod.GET, path = "/{authorId}", produces = MediaType.APPLICATION_JSON_VALUE )
+    public GetAuthor getAuthor(@PathVariable( name = "authorId" ) @NotNull final Long authorId) throws AuthorException {
+        return authorService.getAuthor( authorId );
     }
 }

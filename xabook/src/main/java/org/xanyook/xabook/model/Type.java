@@ -47,9 +47,18 @@ public class Type implements Serializable {
     private Long              id;
 
     @ColumnDefault( "NOW()" )
-    @Column( name = "LAST_CREATION_DATE", insertable = false )
+    @Column( name = "LAST_MODIFICATION_DATE", insertable = false )
     @Temporal( TemporalType.TIMESTAMP )
     private Date              lastModificationDate;
+
+    public Type() {
+        super();
+    }
+
+    public Type(BookTypeEnum bookType) {
+        super();
+        this.bookType = bookType;
+    }
 
     public Set<Book> getBooks() {
         return books;

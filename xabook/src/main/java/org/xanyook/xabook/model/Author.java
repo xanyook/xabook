@@ -13,7 +13,9 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -54,8 +56,12 @@ public class Author implements Serializable {
     @Column( name = "ID", nullable = false, scale = 10 )
     private Long              id;
 
+    @OneToOne( fetch = FetchType.LAZY )
+    @JoinColumn( name = "IMAGE_ID" )
+    private Image             image;
+
     @ColumnDefault( "NOW()" )
-    @Column( name = "LAST_CREATION_DATE", insertable = false )
+    @Column( name = "LAST_MODIFICATION_DATE", insertable = false )
     @Temporal( TemporalType.TIMESTAMP )
     private Date              lastModificationDate;
 

@@ -2,7 +2,9 @@ package org.xanyook.xabook.service.model;
 
 import java.util.Date;
 
-public class GetAuthor {
+import org.springframework.hateoas.ResourceSupport;
+
+public class GetAuthor extends ResourceSupport {
 
     private String biography;
     private Date   birthdate;
