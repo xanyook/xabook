@@ -10,7 +10,6 @@ public class GetAuthor extends ResourceSupport {
     private Date   birthdate;
     private Date   deathDate;
     private String firstName;
-    private Long   id;
     private String lastName;
 
     public String getBiography() {
@@ -27,10 +26,6 @@ public class GetAuthor extends ResourceSupport {
 
     public String getFirstName() {
         return firstName;
-    }
-
-    public Long getId() {
-        return id;
     }
 
     public String getLastName() {
@@ -51,10 +46,6 @@ public class GetAuthor extends ResourceSupport {
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public void setLastName(String lastName) {

@@ -19,13 +19,11 @@ public final class AuthorTransformer {
                 author.setBirthdate( entity.getBirthdate() );
                 author.setDeathDate( entity.getDeathDate() );
                 author.setFirstName( entity.getFirstName() );
-                author.setId( entity.getId() );
                 author.setLastName( entity.getLastName() );
 
                 return author;
             }
         };
-
     }
 
     public static Function<AuthorToBeCreated, Author> getToBeCreatedAuthorConverter() {

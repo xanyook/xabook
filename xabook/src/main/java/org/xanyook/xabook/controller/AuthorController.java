@@ -4,7 +4,11 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.mvc.ControllerLinkBuilder;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -44,7 +48,14 @@ public class AuthorController {
 
     @ApiOperation( value = "get author by ID" )
     @RequestMapping( method = RequestMethod.GET, path = "/{authorId}", produces = MediaType.APPLICATION_JSON_VALUE )
-    public GetAuthor getAuthor(@PathVariable( name = "authorId" ) @NotNull final Long authorId) throws AuthorException {
-        return authorService.getAuthor( authorId );
+    public HttpEntity<GetAuthor> getAuthor(@PathVariable( name = "authorId" ) @NotNull final Long authorId)
+            throws AuthorException {
+        final GetAuthor author = authorService.getAuthor( authorId );
+
+        author.add( ControllerLinkBuilder
+                .linkTo( ControllerLinkBuilder.methodOn( AuthorController.class ).getAuthor( authorId ) )
+                .withSelfRel() );
+
+        return new ResponseEntity<GetAuthor>( author, HttpStatus.OK );
     }
 }
