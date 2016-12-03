@@ -186,7 +186,7 @@
 	<scm>
 		<url>https://github.com/xanyook/xabook</url>
 		<connection>scm:git:git://github.com/xanyook/xabook.git</connection>
-		<developerConnection>scm:git:git@github.com/xanyook/xabook.git</developerConnection>
+		<developerConnection>scm:git:git@github.com:xanyook/xabook.git</developerConnection>
 	</scm>
 
 
