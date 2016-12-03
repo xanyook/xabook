@@ -40,4 +40,11 @@ public class BookService implements IBookService {
         return BookTransformer.getBookConverter().apply( savedBook );
     }
 
+    @Override
+    public void deleteBoook(final Long authorId, final Long bookId) throws EntityNotFoundException {
+        authorRepository.checkAndGetEntity( authorId );
+        final Book book = bookRepository.checkAndGetEntity( bookId );
+        bookRepository.delete( book );
+    }
+
 }

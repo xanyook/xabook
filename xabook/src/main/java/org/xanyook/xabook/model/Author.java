@@ -7,6 +7,7 @@ import java.util.Set;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -36,7 +37,7 @@ public class Author implements Serializable {
     @Temporal( TemporalType.TIMESTAMP )
     private Date              birthdate;
 
-    @OneToMany( mappedBy = "author", fetch = FetchType.LAZY )
+    @OneToMany( mappedBy = "author", fetch = FetchType.LAZY, cascade = { CascadeType.REMOVE } )
     private Set<Book>         books;
 
     @ColumnDefault( "NOW()" )
