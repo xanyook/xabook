@@ -46,4 +46,15 @@ public class BookController {
         bookService.deleteBoook( authorId, bookId );
     }
 
+    @RequestMapping( path = "{bookId}", method = RequestMethod.GET )
+    public GetBook getBook(
+        // @formatter:off
+            @PathVariable( name = "authorId" ) Long authorId,
+            @PathVariable( name = "bookId" ) Long bookId
+        // @formatter:on
+    ) throws EntityNotFoundException {
+        return bookService.getBook( authorId, bookId );
+
+    }
+
 }

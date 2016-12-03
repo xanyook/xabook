@@ -8,6 +8,8 @@ public interface IBookService {
 
     public GetBook createBook(long authorId, BookToBeCreated book) throws EntityNotFoundException;
 
-    void deleteBoook(Long authorId, Long bookId) throws EntityNotFoundException;
+    void deleteBoook(long authorId, long bookId) throws EntityNotFoundException;
+
+    GetBook getBook(long authorId, long bookId) throws EntityNotFoundException;
 
 }

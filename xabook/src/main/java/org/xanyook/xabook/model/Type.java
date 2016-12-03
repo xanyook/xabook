@@ -33,7 +33,7 @@ public class Type implements Serializable {
     private Set<Book>         books;
 
     @Enumerated( EnumType.STRING )
-    @Column( name = "BOOK_TYPE", nullable = false, length = 45 )
+    @Column( name = "BOOK_TYPE", nullable = false, length = 45, unique = true )
     private BookTypeEnum      bookType;
 
     @ColumnDefault( "NOW()" )

@@ -28,23 +28,36 @@ public class BookService implements IBookService {
     @Override
     public GetBook createBook(long authorId, BookToBeCreated book) throws EntityNotFoundException {
 
-        final Author CheckedAuthor = authorRepository.checkAndGetEntity( authorId );
+        final Author author = authorRepository.checkAndGetEntity( authorId );
 
         final Type type = TypeRepository.findBybookType( book.getType() );
 
         final Book entity = BookTransformer.getToBeCreatedAuthorConverter().apply( book );
         entity.setType( type );
-        entity.setAuthor( CheckedAuthor );
+        entity.setAuthor( author );
         final Book savedBook = bookRepository.save( entity );
 
         return BookTransformer.getBookConverter().apply( savedBook );
     }
 
     @Override
-    public void deleteBoook(final Long authorId, final Long bookId) throws EntityNotFoundException {
-        authorRepository.checkAndGetEntity( authorId );
-        final Book book = bookRepository.checkAndGetEntity( bookId );
+    public void deleteBoook(final long authorId, final long bookId) throws EntityNotFoundException {
+        final Book book = findBook( authorId, bookId );
         bookRepository.delete( book );
+    }
+
+    private Book findBook(long authorId, long bookId) throws EntityNotFoundException {
+        final Author author = authorRepository.checkAndGetEntity( authorId );
+
+        return author.getBooks().stream().filter( b -> b.getId() == bookId ).findAny()
+                .orElseThrow( EntityNotFoundException::new );
+
+    }
+
+    @Override
+    public GetBook getBook(final long authorId, final long bookId) throws EntityNotFoundException {
+        final Book book = findBook( authorId, bookId );
+        return BookTransformer.getBookConverter().apply( book );
     }
 
 }
