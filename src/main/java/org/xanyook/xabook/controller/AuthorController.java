@@ -9,12 +9,16 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.xanyook.xabook.exception.AuthorException;
+import org.xanyook.xabook.exception.EntityNotFoundException;
 import org.xanyook.xabook.service.IAuthorService;
 import org.xanyook.xabook.service.model.AuthorToBeCreated;
 import org.xanyook.xabook.service.model.GetAuthor;
@@ -22,18 +26,18 @@ import org.xanyook.xabook.service.model.GetAuthor;
 import io.swagger.annotations.ApiOperation;
 
 @RestController
-@RequestMapping( "/authors" )
+@RequestMapping( "/authors/" )
 public class AuthorController {
 
     @Autowired
     private IAuthorService authorService;
 
     @ApiOperation( value = "Create a new Author" )
-    @RequestMapping( method = RequestMethod.POST, path = "/", produces = MediaType.APPLICATION_JSON_VALUE )
+    @PostMapping( path = "", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE )
+    @ResponseStatus( code = HttpStatus.CREATED )
     public GetAuthor createAuthor(
         // @formatter:off
-            @RequestBody @NotNull
-            AuthorToBeCreated AuthorToBeCreated
+            @RequestBody @NotNull AuthorToBeCreated AuthorToBeCreated
         // @formatter:on
     ) throws AuthorException {
         return authorService.createAuthor( AuthorToBeCreated );
@@ -41,15 +45,24 @@ public class AuthorController {
 
     @Valid
     @ApiOperation( value = "Delete author by ID" )
-    @RequestMapping( method = RequestMethod.DELETE, path = "/{authorId}" )
-    public void deleteAuthor(@PathVariable( name = "authorId" ) final Long authorId) throws AuthorException {
+    @DeleteMapping( path = "{authorId}" )
+    @ResponseStatus( code = HttpStatus.NO_CONTENT )
+    public void deleteAuthor(
+        // @formatter:off
+            @PathVariable( name = "authorId" ) final Long authorId
+        // @formatter:on
+    ) throws EntityNotFoundException {
         authorService.deleteAuthor( authorId );
     }
 
     @ApiOperation( value = "get author by ID" )
-    @RequestMapping( method = RequestMethod.GET, path = "/{authorId}", produces = MediaType.APPLICATION_JSON_VALUE )
-    public HttpEntity<GetAuthor> getAuthor(@PathVariable( name = "authorId" ) @NotNull final Long authorId)
-            throws AuthorException {
+    @GetMapping( path = "{authorId}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE )
+    @ResponseStatus( code = HttpStatus.CREATED )
+    public HttpEntity<GetAuthor> getAuthor(
+        // @formatter:off
+            @PathVariable( name = "authorId" ) @NotNull final Long authorId
+        // @formatter:on
+    ) throws EntityNotFoundException {
         final GetAuthor author = authorService.getAuthor( authorId );
 
         author.add( ControllerLinkBuilder

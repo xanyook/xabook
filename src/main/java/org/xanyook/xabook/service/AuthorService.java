@@ -2,7 +2,7 @@ package org.xanyook.xabook.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.xanyook.xabook.exception.AuthorException;
+import org.xanyook.xabook.exception.EntityNotFoundException;
 import org.xanyook.xabook.model.Author;
 import org.xanyook.xabook.model.util.transformer.AuthorTransformer;
 import org.xanyook.xabook.repository.AuthorRepository;
@@ -25,23 +25,16 @@ public class AuthorService implements IAuthorService {
     }
 
     @Override
-    public void deleteAuthor(final long id) throws AuthorException {
+    public void deleteAuthor(final long id) throws EntityNotFoundException {
 
-        if (!authorRepository.exists( id )) {
-            throw new AuthorException( "Impossible de trouver l'auteur d'ID " + id );
-        }
+        final Author author = authorRepository.checkAndGetEntity( id );
         authorRepository.delete( id );
     }
 
     @Override
-    public GetAuthor getAuthor(final long id) throws AuthorException {
-
-        final Author entry = authorRepository.findOne( id );
-        if (null == entry) {
-            throw new AuthorException( "Impossible de trouver l'auteur d'ID " + id );
-        }
-
-        return AuthorTransformer.getAuthorConverter().apply( entry );
+    public GetAuthor getAuthor(final long id) throws EntityNotFoundException {
+        final Author author = authorRepository.checkAndGetEntity( id );
+        return AuthorTransformer.getAuthorConverter().apply( author );
     }
 
 }
