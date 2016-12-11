@@ -30,7 +30,7 @@ public class Author implements Serializable {
 
     private static final long serialVersionUID = 6723741467516233314L;
 
-    @Column( name = "BIOGRAPHY", nullable = false, length = 2000 )
+    @Column( name = "BIOGRAPHY", nullable = true, length = 2000 )
     private String            biography;
 
     @Column( name = "BIRTH_DATE", nullable = false )

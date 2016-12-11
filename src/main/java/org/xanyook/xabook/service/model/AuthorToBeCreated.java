@@ -4,9 +4,12 @@ import java.util.Date;
 
 import javax.validation.constraints.NotNull;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+@ApiModel( value = "Author to be created" )
 public class AuthorToBeCreated {
 
-    @NotNull
     private String biography;
     @NotNull
     private Date   birthdate;
@@ -16,22 +19,27 @@ public class AuthorToBeCreated {
     @NotNull
     private String lastName;
 
+    @ApiModelProperty( value = Documentation.AUTHOR_BIOGRAPHY_DESCRIPTION, required = false )
     public String getBiography() {
         return biography;
     }
 
+    @ApiModelProperty( value = Documentation.AUTHOR_BIRTHDATE_DESCRIPTION, required = true )
     public Date getBirthdate() {
         return birthdate;
     }
 
+    @ApiModelProperty( value = Documentation.AUTHOR_BIRTHDATE_DESCRIPTION, required = false )
     public Date getDeathDate() {
         return deathDate;
     }
 
+    @ApiModelProperty( value = Documentation.AUTHOR_FIRST_NAME_DESCRIPTION, required = true )
     public String getFirstName() {
         return firstName;
     }
 
+    @ApiModelProperty( value = Documentation.AUTHOR_LAST_NAME_DESCRIPTION, required = true )
     public String getLastName() {
         return lastName;
     }
