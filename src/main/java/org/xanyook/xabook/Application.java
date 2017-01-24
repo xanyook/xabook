@@ -10,16 +10,19 @@ import org.xanyook.xabook.repository.XabookRepositoryImpl;
 
 @SpringBootApplication
 @EnableAutoConfiguration
-@EnableJpaRepositories( repositoryBaseClass = XabookRepositoryImpl.class )
+@EnableJpaRepositories(repositoryBaseClass = XabookRepositoryImpl.class)
 public class Application extends SpringBootServletInitializer {
 
-    public static void main(String[] args) {
-        SpringApplication.run( Application.class, args );
-    }
+	public static void main(String[] args) {
 
-    @Override
-    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        return application.sources( Application.class );
-    }
+		// new Application().configure(new
+		// SpringApplicationBuilder(Application.class)).run(args);
+		SpringApplication.run(Application.class, args);
+	}
+q
+	@Override
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+		return application.sources(Application.class);
+	}
 
 }
