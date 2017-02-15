@@ -14,9 +14,9 @@ spring:
     database: MYSQL
     show-sql: true
     hibernate:
-      #ddl-auto: create-drop
+      ddl-auto: create-drop
     properties:
-      hibernate:   
+      hibernate:
         dialect: org.hibernate.dialect.MySQL5Dialect
   datasource:
     platform: postgres
@@ -25,4 +25,4 @@ spring:
     password: xabook
     driverClassName: com.mysql.jdbc.Driver
     testWhileIdle: true
-    validationQuery: SELECT SYSDATE FROM DUAL
+validationQuery: SELECT SYSDATE FROM DUAL
