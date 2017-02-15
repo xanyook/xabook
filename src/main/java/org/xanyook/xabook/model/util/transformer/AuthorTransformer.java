@@ -1,12 +1,16 @@
 package org.xanyook.xabook.model.util.transformer;
 
-import java.util.function.Function;
-
 import org.xanyook.xabook.model.Author;
 import org.xanyook.xabook.service.model.AuthorToBeCreated;
 import org.xanyook.xabook.service.model.GetAuthor;
 
+import java.util.function.Function;
+
 public final class AuthorTransformer {
+
+    private AuthorTransformer() {
+        super();
+    }
 
     public static Function<Author, GetAuthor> getAuthorConverter() {
 
@@ -15,6 +19,7 @@ public final class AuthorTransformer {
             @Override
             public GetAuthor apply(Author entity) {
                 final GetAuthor author = new GetAuthor();
+                author.setAuthorId(entity.getId());
                 author.setBiography( entity.getBiography() );
                 author.setBirthdate( entity.getBirthdate() );
                 author.setDeathDate( entity.getDeathDate() );
@@ -41,10 +46,6 @@ public final class AuthorTransformer {
                 return entity;
             }
         };
-    }
-
-    private AuthorTransformer() {
-        super();
     }
 
 }
