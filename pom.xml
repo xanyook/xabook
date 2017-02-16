@@ -1,229 +1,235 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
-		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.5.1.RELEASE</version>
-	</parent>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.5.1.RELEASE</version>
+    </parent>
 
-	<groupId>org.xanyook</groupId>
-	<artifactId>xabook</artifactId>
-	<version>1.0-SNAPSHOT</version>
-	<packaging>war</packaging>
+    <groupId>org.xanyook</groupId>
+    <artifactId>xabook</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
 
-	<name>xabook</name>
-	<url>http://soontobe.fr</url>
-
-
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<java.version>1.8</java.version>
-	</properties>
+    <name>xabook</name>
+    <url>http://soontobe.fr</url>
 
 
-	<licenses>
-		<license>
-			<name>I didn't check which license, assume it is free to use / copy</name>
-			<url>http://soonetobe.fr</url>
-			<distribution>repo</distribution>
-			<comments></comments>
-		</license>
-	</licenses>
-
-	<developers>
-		<developer>
-			<id>ggo</id>
-			<name>Gil GOUGNOT</name>
-			<email>gilloull@free.fr</email>
-			<url>http://soontobe.fr</url>
-			<organization>Individual</organization>
-			<organizationUrl>http://www.soontobe.fr</organizationUrl>
-			<roles>
-				<role>architect</role>
-				<role>developer</role>
-			</roles>
-			<timezone>Europe/Paris</timezone>
-			<properties>
-				<picUrl>http://www.Idontgetthisone.fr</picUrl>
-			</properties>
-		</developer>
-	</developers>
-
-	<issueManagement>
-		<system>trello</system>
-		<url>https://trello.com/b/4y68yXGJ/xabook</url>
-	</issueManagement>
-
-	<ciManagement>
-		<system>Jenkins</system>
-		<url>http://localhost:8070/jenkins/</url>
-		<notifiers>
-			<notifier>
-				<type>mail</type>
-				<sendOnError>true</sendOnError>
-				<sendOnFailure>true</sendOnFailure>
-				<sendOnSuccess>true</sendOnSuccess>
-				<sendOnWarning>true</sendOnWarning>
-				<configuration>
-					<address>gilloull@free.fr</address>
-				</configuration>
-			</notifier>
-		</notifiers>
-	</ciManagement>
-
-	<mailingLists>
-		<mailingList>
-			<name>Developper List</name>
-			<subscribe>user-subscribe@127.0.0.1</subscribe>
-			<unsubscribe>user-unsubscribe@127.0.0.1</unsubscribe>
-			<post>gilloull@free.fr</post>
-			<archive>http://127.0.0.1/user/</archive>
-			<!-- <otherArchives><otherArchive>http://base.google.com/base/1/127.0.0.1</otherArchive></otherArchives> -->
-		</mailingList>
-	</mailingLists>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.8</java.version>
+    </properties>
 
 
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>io.springfox</groupId>
-				<artifactId>springfox-swagger-ui</artifactId>
-				<version>2.2.2</version>
-				<scope>compile</scope>
-			</dependency>
-			<dependency>
-				<groupId>io.springfox</groupId>
-				<artifactId>springfox-swagger2</artifactId>
-				<version>2.2.2</version>
-				<scope>compile</scope>
-			</dependency>
+    <licenses>
+        <license>
+            <name>I didn't check which license, assume it is free to use / copy</name>
+            <url>http://soonetobe.fr</url>
+            <distribution>repo</distribution>
+            <comments></comments>
+        </license>
+    </licenses>
 
-			<dependency>
-				<groupId>junit</groupId>
-				<artifactId>junit</artifactId>
-				<version>4.12</version>
-				<scope>test</scope>
-			</dependency>
+    <developers>
+        <developer>
+            <id>ggo</id>
+            <name>Gil GOUGNOT</name>
+            <email>gilloull@free.fr</email>
+            <url>http://soontobe.fr</url>
+            <organization>Individual</organization>
+            <organizationUrl>http://www.soontobe.fr</organizationUrl>
+            <roles>
+                <role>architect</role>
+                <role>developer</role>
+            </roles>
+            <timezone>Europe/Paris</timezone>
+            <properties>
+                <picUrl>http://www.Idontgetthisone.fr</picUrl>
+            </properties>
+        </developer>
+    </developers>
 
-		</dependencies>
-	</dependencyManagement>
+    <issueManagement>
+        <system>trello</system>
+        <url>https://trello.com/b/4y68yXGJ/xabook</url>
+    </issueManagement>
 
-	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
+    <ciManagement>
+        <system>Jenkins</system>
+        <url>http://localhost:8070/jenkins/</url>
+        <notifiers>
+            <notifier>
+                <type>mail</type>
+                <sendOnError>true</sendOnError>
+                <sendOnFailure>true</sendOnFailure>
+                <sendOnSuccess>true</sendOnSuccess>
+                <sendOnWarning>true</sendOnWarning>
+                <configuration>
+                    <address>gilloull@free.fr</address>
+                </configuration>
+            </notifier>
+        </notifiers>
+    </ciManagement>
 
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-tomcat</artifactId>
-			<scope>provided</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-jersey</artifactId>
-		</dependency>
-
-
-		<!-- Active la possiblité de faire de l'hyper media REST lvl 4 -->
-		<!-- <dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-starter-data-rest</artifactId> 
-			</dependency> -->
-
-		<!-- ajoute des services de métrique sur l'application -->
-		<!-- <dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-starter-actuator</artifactId> 
-			</dependency> -->
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-hateoas</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>io.springfox</groupId>
-			<artifactId>springfox-swagger2</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>io.springfox</groupId>
-			<artifactId>springfox-swagger-ui</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.yaml</groupId>
-			<artifactId>snakeyaml</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-		</dependency>
-
-	</dependencies>
+    <mailingLists>
+        <mailingList>
+            <name>Developper List</name>
+            <subscribe>user-subscribe@127.0.0.1</subscribe>
+            <unsubscribe>user-unsubscribe@127.0.0.1</unsubscribe>
+            <post>gilloull@free.fr</post>
+            <archive>http://127.0.0.1/user/</archive>
+            <!-- <otherArchives><otherArchive>http://base.google.com/base/1/127.0.0.1</otherArchive></otherArchives> -->
+        </mailingList>
+    </mailingLists>
 
 
-	<build>
-		<pluginManagement>
-			<plugins>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-release-plugin</artifactId>
-					<version>2.5.3</version>
-					<configuration>
-						<tagNameFormat>{project.artifactId}-v@{project.version}</tagNameFormat>
-					</configuration>
-				</plugin>
-			</plugins>
-		</pluginManagement>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>2.2.2</version>
+                <scope>compile</scope>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>2.2.2</version>
+                <scope>compile</scope>
+            </dependency>
 
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>4.12</version>
+                <scope>test</scope>
+            </dependency>
 
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-release-plugin</artifactId>
-			</plugin>
+        </dependencies>
+    </dependencyManagement>
 
-		</plugins>
-	</build>
-
-	<scm>
-		<url>https://github.com/xanyook/xabook</url>
-		<connection>scm:git:git://github.com/xanyook/xabook.git</connection>
-		<developerConnection>scm:git:git@github.com:xanyook/xabook.git</developerConnection>
-	</scm>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
 
 
-	<distributionManagement>
-		<!-- Publish versioned releases here -->
-		<repository>
-			<id>nexus</id>
-			<name>My releases</name>
-			<url>http://localhost:8081/nexus/content/repositories/releases/</url>
-		</repository>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
 
-		<!-- Publish snapshots here -->
-		<snapshotRepository>
-			<id>nexus</id>
-			<name>My snapshots</name>
-			<url>http://localhost:8081/nexus/content/repositories/snapshots/</url>
-		</snapshotRepository>
-	</distributionManagement>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jersey</artifactId>
+        </dependency>
+
+
+        <!-- Active la possiblité de faire de l'hyper media REST lvl 4 -->
+        <!-- <dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-starter-data-rest</artifactId>
+            </dependency> -->
+
+        <!-- ajoute des services de métrique sur l'application -->
+        <!-- <dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-starter-actuator</artifactId>
+            </dependency> -->
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-hateoas</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.yaml</groupId>
+            <artifactId>snakeyaml</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+
+    </dependencies>
+
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-release-plugin</artifactId>
+                    <version>2.5.3</version>
+                    <configuration>
+                        <tagNameFormat>{project.artifactId}-v@{project.version}</tagNameFormat>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+    <scm>
+        <url>https://github.com/xanyook/xabook</url>
+        <connection>scm:git:git://github.com/xanyook/xabook.git</connection>
+        <developerConnection>scm:git:git@github.com:xanyook/xabook.git</developerConnection>
+    </scm>
+
+
+    <distributionManagement>
+        <!-- Publish versioned releases here -->
+        <repository>
+            <id>nexus</id>
+            <name>My releases</name>
+            <url>http://localhost:8081/nexus/content/repositories/releases/</url>
+        </repository>
+
+        <!-- Publish snapshots here -->
+        <snapshotRepository>
+            <id>nexus</id>
+            <name>My snapshots</name>
+            <url>http://localhost:8081/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
 
 </project>

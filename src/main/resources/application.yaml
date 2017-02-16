@@ -26,3 +26,9 @@ spring:
     driverClassName: com.mysql.jdbc.Driver
     testWhileIdle: true
 validationQuery: SELECT SYSDATE FROM DUAL
+---
+application:
+  informations:
+    name: @project.build.finalName@
+    version: @project.version@
+    released: @maven.build.timestamp@

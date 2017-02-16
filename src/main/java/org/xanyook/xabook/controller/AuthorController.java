@@ -2,7 +2,6 @@ package org.xanyook.xabook.controller;
 
 import io.swagger.annotations.*;
 import org.springframework.hateoas.mvc.ControllerLinkBuilder;
-import org.springframework.http.HttpEntity;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -64,7 +63,7 @@ public class AuthorController {
             @ApiResponse(code = 404, message = Documentation.NOT_FOUND_404_DESCRIPTION),
             @ApiResponse(code = 500, message = Documentation.INTERNAL_ERROR_500_DESCRIPTION) })
     @GetMapping(path = "{authorId}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public HttpEntity<GetAuthor> getAuthor(
+    public ResponseEntity<GetAuthor> getAuthor(
             @ApiParam(name = Documentation.AUTHOR_ID, required = true, value = Documentation.AUTHOR_ID_DESCRIPTION)
             @PathVariable(name = Documentation.AUTHOR_ID) @NotNull final Long authorId)
             throws EntityNotFoundException {
