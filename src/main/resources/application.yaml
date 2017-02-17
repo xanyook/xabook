@@ -19,7 +19,7 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.MySQL5Dialect
   datasource:
-    platform: postgres
+    platform: mysql
     url: jdbc:mysql://localhost:3306/xabook?useSSL=false
     username: xabook
     password: xabook
@@ -31,8 +31,19 @@ management:
   info:
     git:
       mode: full
+  security:
+    enabled: false
+  health:
+    diskspace:
+      enabled: false
 ---
 endpoints:
   enabled: false
   info:
+    enabled: true
+  health:
+    enabled: true
+  env:
+    enabled: true
+  trace:
     enabled: true
