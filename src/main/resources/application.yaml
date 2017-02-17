@@ -27,8 +27,12 @@ spring:
     testWhileIdle: true
 validationQuery: SELECT SYSDATE FROM DUAL
 ---
-application:
-  informations:
-    name: @project.build.finalName@
-    version: @project.version@
-    released: @maven.build.timestamp@
+management:
+  info:
+    git:
+      mode: full
+---
+endpoints:
+  enabled: false
+  info:
+    enabled: true
