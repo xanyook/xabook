@@ -47,3 +47,8 @@ endpoints:
     enabled: true
   trace:
     enabled: true
+---
+application:
+  admin:
+    envelope:
+      enabled: true
