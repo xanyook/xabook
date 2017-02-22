@@ -1,15 +1,15 @@
 package org.xanyook.xabook.repository;
 
-import java.io.Serializable;
-
-import javax.persistence.EntityManager;
-
 import org.springframework.data.jpa.repository.support.JpaEntityInformation;
 import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 import org.xanyook.xabook.exception.EntityNotFoundException;
 
-public class XabookRepositoryImpl<T, ID extends Serializable> extends SimpleJpaRepository<T, ID>
-        implements XabookRepository<T, ID> {
+import javax.persistence.EntityManager;
+import java.io.Serializable;
+
+import static org.xanyook.xabook.exception.EntityNotFoundException.NotFoundCode.RESSOURCE_NOT_FOUND;
+
+public class XabookRepositoryImpl<T, ID extends Serializable> extends SimpleJpaRepository<T, ID> implements XabookRepository<T, ID> {
 
     private final EntityManager entityManager;
 
@@ -22,7 +22,7 @@ public class XabookRepositoryImpl<T, ID extends Serializable> extends SimpleJpaR
     public T checkAndGetEntity(ID id) throws EntityNotFoundException {
 
         if (!exists( id )) {
-            throw new EntityNotFoundException();
+            throw new EntityNotFoundException(RESSOURCE_NOT_FOUND).set("id", id);
         }
         return findOne( id );
     }

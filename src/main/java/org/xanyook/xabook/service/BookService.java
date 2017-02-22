@@ -48,10 +48,7 @@ public class BookService implements IBookService {
 
     private Book findBook(long authorId, long bookId) throws EntityNotFoundException {
         final Author author = authorRepository.checkAndGetEntity( authorId );
-
-        return author.getBooks().stream().filter( b -> b.getId() == bookId ).findAny()
-                .orElseThrow( EntityNotFoundException::new );
-
+        return author.getBooks().stream().filter(book -> book.getId() == bookId).findFirst().orElseThrow(() -> new EntityNotFoundException(EntityNotFoundException.NotFoundCode.BOOK_NOT_FOUND).set("bookId", bookId));
     }
 
     @Override

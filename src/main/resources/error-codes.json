@@ -1,0 +1,18 @@
+[
+  {
+    "code":"DEFAULT_ERROR_CODE",
+    "message":"Unexpected error occured"
+  },
+  {
+    "code":"BOOK_NOT_FOUND",
+    "message":"Customer not found"
+  },
+  {
+    "code":"AUTHOR_NOT_FOUND",
+    "message":"Invalid operation on book"
+  },
+  {
+    "code":"RESSOURCE_NOT_FOUND",
+    "message":"Requested resource is not available"
+  }
+]

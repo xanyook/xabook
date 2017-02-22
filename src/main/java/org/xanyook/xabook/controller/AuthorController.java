@@ -20,7 +20,7 @@ import java.net.URI;
 import static org.springframework.http.ResponseEntity.*;
 
 @RestController
-@RequestMapping("/authors/")
+@RequestMapping("/authors")
 @Api(value = "authors Web Services")
 public class AuthorController {
 
@@ -33,7 +33,7 @@ public class AuthorController {
             @ApiResponse(code = 201, message = Documentation.CREATED_201_DESCRIPTION, response = GetAuthor.class),
             @ApiResponse(code = 404, message = Documentation.NOT_FOUND_404_DESCRIPTION),
             @ApiResponse(code = 500, message = Documentation.INTERNAL_ERROR_500_DESCRIPTION) })
-    @PostMapping(produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @PostMapping(value = "", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<Void> createAuthor(
             @ApiParam(required = true, value = Documentation.AUTHOR_TO_BE_CREATED_DESCRIPTION)
             @RequestBody @NotNull AuthorToBeCreated AuthorToBeCreated)
